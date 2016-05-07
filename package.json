@@ -2,7 +2,7 @@
   "name": "orbit-db-eventstore",
   "version": "0.0.2",
   "description": "Eventlog for orbit-db",
-  "main": "src/EventlogStore.js",
+  "main": "src/EventStore.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
