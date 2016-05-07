@@ -1,0 +1,14 @@
+{
+  "name": "orbit-eventstore",
+  "version": "0.0.1",
+  "description": "Eventlog for orbit-db",
+  "main": "src/EventlogStore.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Haad",
+  "license": "MIT",
+  "dependencies": {
+    "orbit-db-store": "0.0.1"
+  }
+}
