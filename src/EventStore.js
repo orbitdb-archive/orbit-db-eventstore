@@ -6,7 +6,8 @@ const EventIndex = require('./EventIndex');
 
 class EventStore extends Store {
   constructor(ipfs, id, dbname, options) {
-    Object.assign(options || {}, { Index: EventIndex });
+    if(!options) Object.assign({}, { Index: EventIndex });
+    if(!options.Index) Object.assign(options, { Index: EventIndex });
     super(ipfs, id, dbname, options)
   }
 
@@ -15,18 +16,6 @@ class EventStore extends Store {
       op: 'ADD',
       key: null,
       value: data,
-      meta: {
-        ts: new Date().getTime()
-      }
-    };
-    return this._addOperation(operation);
-  }
-
-  remove(hash) {
-    const operation = {
-      op: 'DEL',
-      key: null,
-      value: hash,
       meta: {
         ts: new Date().getTime()
       }
