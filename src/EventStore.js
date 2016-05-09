@@ -6,13 +6,13 @@ const EventIndex = require('./EventIndex');
 
 class EventStore extends Store {
   constructor(ipfs, id, dbname, options) {
-    if(!options) Object.assign({}, { Index: EventIndex });
+    if(!options) options = {};
     if(!options.Index) Object.assign(options, { Index: EventIndex });
     super(ipfs, id, dbname, options)
   }
 
   add(data) {
-    const operation = {
+    const event = {
       op: 'ADD',
       key: null,
       value: data,
@@ -20,7 +20,7 @@ class EventStore extends Store {
         ts: new Date().getTime()
       }
     };
-    return this._addOperation(operation);
+    return this._addOperation(event);
   }
 
   iterator(options) {
@@ -48,15 +48,15 @@ class EventStore extends Store {
     if(!opts) opts = {};
 
     const amount = opts.limit ? (opts.limit > -1 ? opts.limit : this._index.get().length) : 1; // Return 1 if no limit is provided
-    const operations = this._index.get();
+    const events = this._index.get();
     let result = [];
 
     if(opts.gt || opts.gte) {
       // Greater than case
-      result = this._read(operations, opts.gt ? opts.gt : opts.gte, amount, opts.gte ? true : false)
+      result = this._read(events, opts.gt ? opts.gt : opts.gte, amount, opts.gte ? true : false)
     } else {
       // Lower than and lastN case, search latest first by reversing the sequence
-      result = this._read(operations.reverse(), opts.lt ? opts.lt : opts.lte, amount, opts.lte || !opts.lt).reverse()
+      result = this._read(events.reverse(), opts.lt ? opts.lt : opts.lte, amount, opts.lte || !opts.lt).reverse()
     }
 
     if(opts.reverse) result.reverse();
