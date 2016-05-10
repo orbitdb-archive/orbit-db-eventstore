@@ -14,7 +14,7 @@ class EventIndex {
       if(handled.indexOf(item.hash) === -1) {
         handled.push(item.hash);
         if(item.payload.op === 'ADD')
-          this._index[item.hash] = item.payload
+          this._index[item.hash] = item
       }
       return handled;
     }, []);
