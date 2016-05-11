@@ -9,6 +9,7 @@
   "author": "Haad",
   "license": "MIT",
   "dependencies": {
+    "lazy.js": "^0.4.2",
     "orbit-db-store": "0.0.7"
   }
 }
