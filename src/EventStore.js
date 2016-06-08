@@ -22,6 +22,10 @@ class EventStore extends Store {
     });
   }
 
+  get(hash) {
+    return this.iterator({ gte: hash, limit: 1 }).collect()[0];
+  }
+
   iterator(options) {
     const messages = this._query(this.dbname, options);
     let currentIndex = 0;
