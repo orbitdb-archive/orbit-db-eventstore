@@ -2,7 +2,7 @@
 
 const slice = require('lodash.slice')
 const take = require('lodash.take')
-const findIndex = require('lodash.findIndex')
+const findIndex = require('lodash.findindex')
 const Store = require('orbit-db-store')
 const EventIndex = require('./EventIndex')
 
