@@ -5,8 +5,8 @@ const Store      = require('orbit-db-store');
 const EventIndex = require('./EventIndex');
 
 class EventStore extends Store {
-  constructor(ipfs, id, dbname, options) {
-    if(!options) options = {};
+  constructor(ipfs, id, dbname, options = {}) {
+    // if(!options) options = {};
     if(options.Index === undefined) Object.assign(options, { Index: EventIndex });
     super(ipfs, id, dbname, options)
   }
