@@ -1,13 +1,14 @@
-'use strict';
+'use strict'
 
-const Lazy       = require('lazy.js');
-const Store      = require('orbit-db-store');
-const EventIndex = require('./EventIndex');
+const slice = require('lodash.slice')
+const take = require('lodash.take')
+const findIndex = require('lodash.findIndex')
+const Store = require('orbit-db-store')
+const EventIndex = require('./EventIndex')
 
 class EventStore extends Store {
   constructor(ipfs, id, dbname, options = {}) {
-    // if(!options) options = {};
-    if(options.Index === undefined) Object.assign(options, { Index: EventIndex });
+    if(options.Index === undefined) Object.assign(options, { Index: EventIndex })
     super(ipfs, id, dbname, options)
   }
 
@@ -19,40 +20,40 @@ class EventStore extends Store {
       meta: {
         ts: new Date().getTime()
       }
-    });
+    })
   }
 
   get(hash) {
-    return this.iterator({ gte: hash, limit: 1 }).collect()[0];
+    return this.iterator({ gte: hash, limit: 1 }).collect()[0]
   }
 
   iterator(options) {
-    const messages = this._query(this.dbname, options);
-    let currentIndex = 0;
+    const messages = this._query(this.dbname, options)
+    let currentIndex = 0
     let iterator = {
       [Symbol.iterator]() {
-        return this;
+        return this
       },
       next() {
-        let item = { value: null, done: true };
+        let item = { value: null, done: true }
         if(currentIndex < messages.length) {
-          item = { value: messages[currentIndex], done: false };
-          currentIndex ++;
+          item = { value: messages[currentIndex], done: false }
+          currentIndex ++
         }
-        return item;
+        return item
       },
       collect: () => messages
     }
 
-    return iterator;
+    return iterator
   }
 
   _query(dbname, opts) {
-    if(!opts) opts = {};
+    if(!opts) opts = {}
 
-    const amount = opts.limit ? (opts.limit > -1 ? opts.limit : this._index.get().length) : 1; // Return 1 if no limit is provided
-    const events = this._index.get();
-    let result = [];
+    const amount = opts.limit ? (opts.limit > -1 ? opts.limit : this._index.get().length) : 1 // Return 1 if no limit is provided
+    const events = this._index.get()
+    let result = []
 
     if(opts.gt || opts.gte) {
       // Greater than case
@@ -62,17 +63,17 @@ class EventStore extends Store {
       result = this._read(events.reverse(), opts.lt ? opts.lt : opts.lte, amount, opts.lte || !opts.lt).reverse()
     }
 
-    if(opts.reverse) result.reverse();
-
-    return result.toArray();
+    return result
   }
 
   _read(ops, hash, amount, inclusive) {
-    return Lazy(ops)
-      .skipWhile((f) => hash && f.hash !== hash)
-      .drop(inclusive ? 0 : 1)
-      .take(amount);
+    // Find the index of the gt/lt hash, or start from the beginning of the array if not found
+    let startIndex = Math.max(findIndex(ops, (e) => e.hash === hash), 0)
+    // If gte/lte is set, we include the given hash, if not, start from the next element
+    startIndex += (inclusive ? 0 : 1)
+    // Slice the array to its requested size
+    return take(ops.slice(startIndex), amount)
   }
 }
 
-module.exports = EventStore;
+module.exports = EventStore

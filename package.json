@@ -9,7 +9,9 @@
   "author": "Haad",
   "license": "MIT",
   "dependencies": {
-    "lazy.js": "^0.4.2",
+    "lodash.findindex": "^4.6.0",
+    "lodash.slice": "^4.2.0",
+    "lodash.take": "^4.1.1",
     "orbit-db-store": "0.1.3"
   }
 }
