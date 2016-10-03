@@ -1,6 +1,6 @@
 {
   "name": "orbit-db-eventstore",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Eventlog for orbit-db",
   "main": "src/EventStore.js",
   "scripts": {
