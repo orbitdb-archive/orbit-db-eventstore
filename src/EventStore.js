@@ -28,7 +28,7 @@ class EventStore extends Store {
   }
 
   iterator(options) {
-    const messages = this._query(this.dbname, options)
+    const messages = this._query(options)
     let currentIndex = 0
     let iterator = {
       [Symbol.iterator]() {
@@ -48,7 +48,7 @@ class EventStore extends Store {
     return iterator
   }
 
-  _query(dbname, opts) {
+  _query(opts) {
     if(!opts) opts = {}
 
     const amount = opts.limit ? (opts.limit > -1 ? opts.limit : this._index.get().length) : 1 // Return 1 if no limit is provided
