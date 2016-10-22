@@ -12,6 +12,6 @@
     "lodash.findindex": "^4.6.0",
     "lodash.slice": "^4.2.0",
     "lodash.take": "^4.1.1",
-    "orbit-db-store": "0.1.7"
+    "orbit-db-store": "0.1.8"
   }
 }
