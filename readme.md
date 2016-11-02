@@ -16,7 +16,7 @@ Used in [orbit-db](https://github.com/haadcode/orbit-db).
 
 ## Install
 ```
-npm install orbit-db
+npm install orbit-db ipfs
 ```
 
 ## Usage
