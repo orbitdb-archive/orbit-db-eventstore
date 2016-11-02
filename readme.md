@@ -58,10 +58,10 @@ See [example/index.html]() for a detailed example. Note that to run this example
 
 ## API
 
+
 ### eventlog(name)
 
-  Package: 
-  [orbit-db-eventstore](https://github.com/haadcode/orbit-db-eventstore)
+  *Inherits from https://github.com/haadcode/orbit-db-store#orbit-db-store*
 
   ```javascript
   const db = orbitdb.eventlog('site.visitors')
@@ -94,59 +94,7 @@ See [example/index.html]() for a detailed example. Note that to run this example
     db.events.on('data', (dbname, event) => ... )
     ```
 
-    See [events](#events) for full description.
-
-### events
-
-  Eventlog has an `events` ([EventEmitter](https://nodejs.org/api/events.html)) object that emits events that describe what's happening in the database.
-
-  - `data` - (dbname, event)
-    
-    Emitted after an entry was added to the database
-
-    ```javascript
-    db.events.on('data', (dbname, event) => ... )
-    ```
-
-  - `sync` - (dbname)
-
-    Emitted before starting a database sync with a peer.
-
-    ```javascript
-    db.events.on('sync', (dbname) => ... )
-    ```
-
-  - `load` - (dbname, hash)
-
-    Emitted before loading the database history. *hash* is the hash from which the history is loaded from.
-
-    ```javascript
-    db.events.on('load', (dbname, hash) => ... )
-    ```
-
-  - `history` - (dbname, entries)
-
-    Emitted after loading the database history. *entries* is an Array of entries that were loaded.
-
-    ```javascript
-    db.events.on('history', (dbname, entries) => ... )
-    ```
-
-  - `ready` - (dbname)
-
-    Emitted after fully loading the database history.
-
-    ```javascript
-    db.events.on('ready', (dbname) => ... )
-    ```
-
-  - `write` - (dbname, hash)
-
-    Emitted after an entry was added locally to the database. *hash* is the IPFS hash of the latest state of the database.
-
-    ```javascript
-    db.events.on('write', (dbname, hash) => ... )
-    ```
+  See [Events](https://github.com/haadcode/orbit-db-store#events) for full description
 
 ## Contributing
 
