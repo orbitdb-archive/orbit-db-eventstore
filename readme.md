@@ -58,43 +58,7 @@ See [example/index.html]() for a detailed example. Note that to run this example
 
 ## API
 
-
-### eventlog(name)
-
-  *Inherits from https://github.com/haadcode/orbit-db-store#orbit-db-store*
-
-  ```javascript
-  const db = orbitdb.eventlog('site.visitors')
-  ```
-
-  - **add(event)**
-    ```javascript
-    db.add({ name: 'User1' }).then((hash) => ...)
-    ```
-    
-  - **get(hash)**
-    ```javascript
-    const event = db.get(hash)
-      .map((e) => e.payload.value)
-    // { name: 'User1' }
-    ```
-    
-  - **iterator([options])**
-    ```javascript
-    // TODO: add all options - gt, gte, lt, lte, limit, reverse
-    const all = db.iterator({ limit: -1 })
-      .collect()
-      .map((e) => e.payload.value)
-    // [{ name: 'User1' }]
-    ```
-    
-  - **events**
-
-    ```javascript
-    db.events.on('data', (dbname, event) => ... )
-    ```
-
-  See [Events](https://github.com/haadcode/orbit-db-store#events) for full description
+See [orbit-db's API Documenations](https://github.com/haadcode/orbit-db/blob/master/API.md#eventstorename) for full details.
 
 ## Contributing
 
