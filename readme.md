@@ -54,7 +54,7 @@ log.events.on('ready', () => {
 })
 ```
 
-See [example/index.html]() for a detailed example. Note that to run this example, you need to have a local [IPFS daemon](https://dist.ipfs.io/go-ipfs/floodsub-2) [running](https://ipfs.io/docs/getting-started/) at port 5001.
+See [example/index.html](https://github.com/haadcode/orbit-db-eventstore/blob/master/example/index.html) for a detailed example. Note that to run this example, you need to have a local [IPFS daemon](https://dist.ipfs.io/go-ipfs/floodsub-2) [running](https://ipfs.io/docs/getting-started/) at port 5001.
 
 ## API
 
