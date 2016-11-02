@@ -58,7 +58,7 @@ See [example/index.html]() for a detailed example. Note that to run this example
 
 ## API
 
-See [orbit-db's API Documenations](https://github.com/haadcode/orbit-db/blob/master/API.md#eventstorename) for full details.
+See [orbit-db's API Documenations](https://github.com/haadcode/orbit-db/blob/master/API.md#eventlogname) for full details.
 
 ## Contributing
 
