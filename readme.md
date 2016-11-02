@@ -6,6 +6,14 @@ An append-only log with traversable history. Useful for *"latest N"* use cases o
 
 Used in [orbit-db](https://github.com/haadcode/orbit-db).
 
+## Table of Contents
+
+- [Install](#install)
+- [Usage](#usage)
+- [API](#api)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Install
 ```
 npm install orbit-db
@@ -45,6 +53,8 @@ log.events.on('ready', () => {
   // "hello world"
 })
 ```
+
+See [example/index.html]() for a detailed example. Note that to run this example, you need to have a local [IPFS daemon](https://dist.ipfs.io/go-ipfs/floodsub-2) [running](https://ipfs.io/docs/getting-started/) at port 5001.
 
 ## API
 
