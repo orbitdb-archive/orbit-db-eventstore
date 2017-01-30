@@ -1,10 +1,9 @@
 'use strict'
 
-const slice = require('lodash.slice')
-const take = require('lodash.take')
-const findIndex = require('lodash.findindex')
 const Store = require('orbit-db-store')
 const EventIndex = require('./EventIndex')
+
+// TODO: generalize the Iterator functions and spin to its own module
 
 class EventStore extends Store {
   constructor(ipfs, id, dbname, options = {}) {
@@ -52,7 +51,7 @@ class EventStore extends Store {
     if(!opts) opts = {}
 
     const amount = opts.limit ? (opts.limit > -1 ? opts.limit : this._index.get().length) : 1 // Return 1 if no limit is provided
-    const events = this._index.get()
+    const events = this._index.get().slice()
     let result = []
 
     if(opts.gt || opts.gte) {
@@ -68,11 +67,13 @@ class EventStore extends Store {
 
   _read(ops, hash, amount, inclusive) {
     // Find the index of the gt/lt hash, or start from the beginning of the array if not found
-    let startIndex = Math.max(findIndex(ops, (e) => e.hash === hash), 0)
+    const index = ops.map((e) => e.hash).indexOf(hash)
+    let startIndex = Math.max(index, 0)
     // If gte/lte is set, we include the given hash, if not, start from the next element
-    startIndex += (inclusive ? 0 : 1)
+    startIndex += inclusive ? 0 : 1
     // Slice the array to its requested size
-    return take(ops.slice(startIndex), amount)
+    const res = ops.slice(startIndex).slice(0, amount)
+    return res
   }
 }
 
