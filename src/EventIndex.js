@@ -1,6 +1,10 @@
 'use strict'
 
 class EventIndex {
+  constructor() {
+    this._index = []
+  }
+
   get() {
     return this._index
   }
