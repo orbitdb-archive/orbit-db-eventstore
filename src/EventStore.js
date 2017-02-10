@@ -15,10 +15,7 @@ class EventStore extends Store {
     return this._addOperation({
       op: 'ADD',
       key: null,
-      value: data,
-      meta: {
-        ts: new Date().getTime()
-      }
+      value: data
     })
   }
 
