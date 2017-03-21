@@ -9,6 +9,6 @@
   "author": "Haad",
   "license": "MIT",
   "dependencies": {
-    "orbit-db-store": "github:haadcode/orbit-db-store#feat\/immutable-log"
+    "orbit-db-store": "~0.2.0"
   }
 }
