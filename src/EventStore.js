@@ -9,6 +9,7 @@ class EventStore extends Store {
   constructor(ipfs, id, dbname, options = {}) {
     if(options.Index === undefined) Object.assign(options, { Index: EventIndex })
     super(ipfs, id, dbname, options)
+    this._type = 'eventlog'
   }
 
   add(data) {
