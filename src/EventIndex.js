@@ -6,11 +6,11 @@ class EventIndex {
   }
 
   get() {
-    return this._index ? this._index : []
+    return this._index ? this._index.values : []
   }
 
   updateIndex(oplog) {
-    this._index = oplog.values
+    this._index = oplog
   }
 }
 
