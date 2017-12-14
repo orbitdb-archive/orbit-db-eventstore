@@ -2,7 +2,7 @@
 
 class EventIndex {
   constructor() {
-    this._index = []
+    this._index = null
   }
 
   get() {
