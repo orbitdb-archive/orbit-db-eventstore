@@ -1,15 +1,15 @@
 'use strict'
 
 class EventIndex {
-  constructor() {
+  constructor () {
     this._index = null
   }
 
-  get() {
+  get () {
     return this._index ? this._index.values : []
   }
 
-  updateIndex(oplog) {
+  updateIndex (oplog) {
     this._index = oplog
   }
 }
