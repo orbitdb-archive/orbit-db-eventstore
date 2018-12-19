@@ -10,7 +10,7 @@
   "author": "Haad",
   "license": "MIT",
   "dependencies": {
-    "orbit-db-store": "github:orbitdb/orbit-db-store"
+    "orbit-db-store": "github:orbitdb/orbit-db-store#feat/ipfs-dag"
   },
   "devDependencies": {
     "standard": "^12.0.1"
