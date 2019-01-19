@@ -1,6 +1,9 @@
 # orbit-db-eventstore
 
 [![npm version](https://badge.fury.io/js/orbit-db-eventstore.svg)](https://badge.fury.io/js/orbit-db-eventstore)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/orbitdb/Lobby)
+
+> Append-Only Log database for orbit-db
 
 An append-only log with traversable history. Useful for *"latest N"* use cases or as a message queue.
 
@@ -15,7 +18,10 @@ Used in [orbit-db](https://github.com/haadcode/orbit-db).
 - [License](#license)
 
 ## Install
-```
+
+This project uses [npm](https://npmjs.com) and [nodejs](https://nodejs.org)
+
+```sh
 npm install orbit-db ipfs
 ```
 
@@ -62,7 +68,9 @@ See [orbit-db's API Documenations](https://github.com/haadcode/orbit-db/blob/mas
 
 ## Contributing
 
-See [orbit-db's contributing guideline](https://github.com/haadcode/orbit-db#contributing).
+If you think this could be better, please [open an issue](https://github.com/orbitdb/orbit-db-eventstore/issues/new)!
+
+Please note that all interactions in @orbitdb fall under our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 

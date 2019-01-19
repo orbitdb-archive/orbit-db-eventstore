@@ -3,10 +3,21 @@
   "version": "1.4.0",
   "description": "Eventlog for orbit-db",
   "main": "src/EventStore.js",
+  "homepage": "https://github.com/orbitdb/orbit-db-eventstore",
+  "bugs": "https://github.com/orbitdb/orbit-db-eventstore/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orbitdb/orbit-db-eventstore"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "standard"
   },
+  "keywords": [
+    "orbitdb",
+    "orbit-db",
+    "eventstore"
+  ],
   "author": "Haad",
   "license": "MIT",
   "dependencies": {
