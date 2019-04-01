@@ -1,6 +1,6 @@
 {
   "name": "orbit-db-eventstore",
-  "version": "1.4.0",
+  "version": "1.5.0-rc.1",
   "description": "Eventlog for orbit-db",
   "main": "src/EventStore.js",
   "homepage": "https://github.com/orbitdb/orbit-db-eventstore",
@@ -21,7 +21,7 @@
   "author": "Haad",
   "license": "MIT",
   "dependencies": {
-    "orbit-db-store": "github:orbitdb/orbit-db-store"
+    "orbit-db-store": "rc1"
   },
   "devDependencies": {
     "standard": "^12.0.1"
