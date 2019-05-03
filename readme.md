@@ -34,17 +34,17 @@ const IPFS = require('ipfs')
 const OrbitDB = require('orbit-db')
 
 const ipfs = new IPFS()
-const orbitdb = new OrbitDB(ipfs)
+const orbitdb = await OrbitDB.createInstance(ipfs)
 ```
 
 Get a log database and add an entry to it:
 
 ```javascript
-const log = orbitdb.eventlog('haad.posts')
+const log = await orbitdb.eventlog('haad.posts')
 log.add({ name: 'hello world' })
   .then(() => {
-    const items = log.iterator().collect()
-    items.forEach((e) => console.log(e.name))
+    const items = log.iterator().collect().map(e => e.payload.value)
+    items.forEach(e => console.log(e.name))
     // "hello world"
   })
 ```
@@ -52,10 +52,10 @@ log.add({ name: 'hello world' })
 Later, when the database contains data, load the history and query when ready:
 
 ```javascript
-const log = orbitdb.eventlog('haad.posts')
+const log = await orbitdb.eventlog('haad.posts')
 log.events.on('ready', () => {
-  const items = log.iterator().collect()
-  items.forEach((e) => console.log(e.name))
+  const items = log.iterator().collect().map(e => e.payload.value)
+  items.forEach(e => console.log(e.name))
   // "hello world"
 })
 ```
