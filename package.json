@@ -1,6 +1,6 @@
 {
   "name": "orbit-db-eventstore",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Eventlog for orbit-db",
   "main": "src/EventStore.js",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "Haad",
   "license": "MIT",
   "dependencies": {
-    "orbit-db-store": "orbitdb/orbit-db-store#patch/2.5.4"
+    "orbit-db-store": "~2.5.4"
   }
 }
