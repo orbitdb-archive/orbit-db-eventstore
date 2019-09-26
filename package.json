@@ -25,5 +25,10 @@
   },
   "devDependencies": {
     "standard": "^12.0.1"
-  }
+  },
+  "localMaintainers": [
+    "haad <haad@haja.io>",
+    "shamb0t <shams@haja.io>",
+    "hajamark <mark@haja.io>"
+  ]
 }
