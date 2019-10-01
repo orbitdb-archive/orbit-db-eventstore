@@ -6,9 +6,9 @@ const EventIndex = require('./EventIndex')
 // TODO: generalize the Iterator functions and spin to its own module
 
 class EventStore extends Store {
-  constructor (ipfs, id, dbname, options = {}) {
+  constructor (ipfs, identities, id, dbname, options = {}) {
     if (options.Index === undefined) Object.assign(options, { Index: EventIndex })
-    super(ipfs, id, dbname, options)
+    super(ipfs, identities, id, dbname, options)
     this._type = 'eventlog'
   }
 

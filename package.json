@@ -21,7 +21,7 @@
   "author": "Haad",
   "license": "MIT",
   "dependencies": {
-    "orbit-db-store": "next"
+    "orbit-db-store": "orbitdb/orbit-db-store#feat/identities"
   },
   "devDependencies": {
     "standard": "^12.0.1"
