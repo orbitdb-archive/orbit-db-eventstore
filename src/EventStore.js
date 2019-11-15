@@ -12,15 +12,6 @@ class EventStore extends Store {
     this._type = 'eventlog'
   }
 
-  static async create (ipfs, identity, address, options) {
-    const heads = await Store.loadHeadsFromCache(options.cache, address)
-    if (heads.length > 0) {
-      options = Object.assign(options, { heads })
-    }
-    return new EventStore(ipfs, identity, address, options)
-  }
-
-
   add (data) {
     return this._addOperation({
       op: 'ADD',
