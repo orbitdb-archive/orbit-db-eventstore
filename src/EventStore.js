@@ -12,12 +12,12 @@ class EventStore extends Store {
     this._type = 'eventlog'
   }
 
-  add (data) {
+  add (data, options = {}) {
     return this._addOperation({
       op: 'ADD',
       key: null,
       value: data
-    })
+    }, options)
   }
 
   get (hash) {
