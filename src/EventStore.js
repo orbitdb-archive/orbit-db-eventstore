@@ -9,7 +9,13 @@ class EventStore extends Store {
   constructor (ipfs, id, dbname, options = {}) {
     if (options.Index === undefined) Object.assign(options, { Index: EventIndex })
     super(ipfs, id, dbname, options)
-    this._type = 'eventlog'
+    this._type = 'eventlog';
+    this.events.on("replicated.progress", (address, hash, entry, progress, have) => {
+      this._procEntry(entry);
+    });
+    this.events.on("write", (address, entry, heads) => {
+      this._procEntry(entry);
+    });
   }
 
   add (data, options = {}) {
@@ -23,7 +29,6 @@ class EventStore extends Store {
   get (hash) {
     return this.iterator({ gte: hash, limit: 1 }).collect()[0]
   }
-
   iterator (options) {
     const messages = this._query(options)
     let currentIndex = 0
@@ -72,6 +77,14 @@ class EventStore extends Store {
     // Slice the array to its requested size
     const res = ops.slice(startIndex).slice(0, amount)
     return res
+  }
+  _procEntry(entry) {
+    var {op, value} = entry.payload;
+    switch(op) {
+      case "ADD": {
+        this.events.emit("db.append", value)
+      }
+    }
   }
 }
 
