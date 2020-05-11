@@ -9,7 +9,10 @@ class EventStore extends Store {
   constructor (ipfs, id, dbname, options = {}) {
     if (options.Index === undefined) Object.assign(options, { Index: EventIndex })
     super(ipfs, id, dbname, options)
-    this._type = 'eventlog'
+    this._type = 'eventlog';
+    this.events.on("log.op.ADD", (address, hash, payload) => {
+      this.events.emit("db.append", payload.value)
+    })
   }
 
   add (data, options = {}) {
@@ -23,7 +26,6 @@ class EventStore extends Store {
   get (hash) {
     return this.iterator({ gte: hash, limit: 1 }).collect()[0]
   }
-
   iterator (options) {
     const messages = this._query(options)
     let currentIndex = 0
