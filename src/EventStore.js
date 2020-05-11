@@ -10,12 +10,9 @@ class EventStore extends Store {
     if (options.Index === undefined) Object.assign(options, { Index: EventIndex })
     super(ipfs, id, dbname, options)
     this._type = 'eventlog';
-    this.events.on("replicated.progress", (address, hash, entry, progress, have) => {
-      this._procEntry(entry);
-    });
-    this.events.on("write", (address, entry, heads) => {
-      this._procEntry(entry);
-    });
+    this.events.on("log.op.ADD", (address, hash, payload) => {
+      this.events.emit("db.append", payload.value)
+    })
   }
 
   add (data, options = {}) {
@@ -81,14 +78,6 @@ class EventStore extends Store {
     // Slice the array to its requested size
     const res = ops.slice(startIndex).slice(0, amount)
     return res
-  }
-  _procEntry(entry) {
-    var {op, value} = entry.payload;
-    switch(op) {
-      case "ADD": {
-        this.events.emit("db.append", value)
-      }
-    }
   }
 }
 
