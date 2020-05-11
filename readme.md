@@ -72,6 +72,8 @@ If you think this could be better, please [open an issue](https://github.com/orb
 
 Please note that all interactions in @orbitdb fall under our [Code of Conduct](CODE_OF_CONDUCT.md).
 
+Note that tests for this module are in the [`orbit-db`](https://github.com/orbitdb/orbit-db) repository.
+
 ## License
 
-[MIT](LICENSE) © 2016-2018 Protocol Labs Inc., Haja Networks Oy
+[MIT](LICENSE) © 2016-2020 Protocol Labs Inc., Haja Networks Oy
