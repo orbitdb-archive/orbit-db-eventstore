@@ -26,6 +26,7 @@ class EventStore extends Store {
   get (hash) {
     return this.iterator({ gte: hash, limit: 1 }).collect()[0]
   }
+  
   iterator (options) {
     const messages = this._query(options)
     let currentIndex = 0
@@ -50,7 +51,8 @@ class EventStore extends Store {
   _query (opts) {
     if (!opts) opts = {}
 
-    const amount = opts.limit ? (opts.limit > -1 ? opts.limit : this._index.get().length) : 1 // Return 1 if no limit is provided
+    let amount 
+    const amount = !opts.limit || opts.limit == -1 ? this._index.get().length : opts.limit; // Return all by default. 
     const events = this._index.get().slice()
     let result = []
 
