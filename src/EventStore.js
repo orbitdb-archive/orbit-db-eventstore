@@ -51,7 +51,7 @@ class EventStore extends Store {
   _query (opts) {
     if (!opts) opts = {}
 
-    const amount = !opts.limit || opts.limit == -1 ? this._index.get().length : opts.limit; // Return all by default. 
+    const amount = !opts.limit || opts.limit == -1 ? this._index.get().length : Math.abs(opts.limit); // Return all by default. 
     const events = this._index.get().slice()
     let result = []
 
