@@ -1,17 +1,15 @@
-'use strict'
-
-const Store = require('orbit-db-store')
-const EventIndex = require('./EventIndex')
+import Store from 'orbit-db-store'
+import EventIndex from './EventIndex.js'
 
 // TODO: generalize the Iterator functions and spin to its own module
 
-class EventStore extends Store {
+export default class EventStore extends Store {
   constructor (ipfs, id, dbname, options = {}) {
     if (options.Index === undefined) Object.assign(options, { Index: EventIndex })
     super(ipfs, id, dbname, options)
-    this._type = 'eventlog';
-    this.events.on("log.op.ADD", (address, hash, payload) => {
-      this.events.emit("db.append", payload.value)
+    this._type = 'eventlog'
+    this.events.on('log.op.ADD', (address, hash, payload) => {
+      this.events.emit('db.append', payload.value)
     })
   }
 
@@ -61,7 +59,7 @@ class EventStore extends Store {
       // Lower than and lastN case, search latest first by reversing the sequence
       result = this._read(events.reverse(), opts.lt ? opts.lt : opts.lte, amount, opts.lte || !opts.lt).reverse()
     }
-    
+
     if (opts.reverse) {
       result.reverse()
     }
@@ -80,5 +78,3 @@ class EventStore extends Store {
     return res
   }
 }
-
-module.exports = EventStore

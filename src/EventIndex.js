@@ -1,6 +1,4 @@
-'use strict'
-
-class EventIndex {
+export default class EventIndex {
   constructor () {
     this._index = null
   }
@@ -13,5 +11,3 @@ class EventIndex {
     this._index = oplog
   }
 }
-
-module.exports = EventIndex
