@@ -22,7 +22,7 @@
   "author": "Haad",
   "license": "MIT",
   "peerDependencies": {
-    "orbit-db-store": "github:orbitdb/orbit-db-store#esm"
+    "orbit-db-store": "next"
   },
   "localMaintainers": [
     "haad <haad@haja.io>",
