@@ -30,8 +30,8 @@ npm install orbit-db ipfs
 First, create an instance of OrbitDB:
 
 ```javascript
-const IPFS = require('ipfs')
-const OrbitDB = require('orbit-db')
+import * as IPFS from 'ipfs'
+import OrbitDB from 'orbit-db'
 
 const ipfs = new IPFS()
 const orbitdb = await OrbitDB.createInstance(ipfs)
