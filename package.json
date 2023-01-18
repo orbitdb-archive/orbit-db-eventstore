@@ -1,6 +1,6 @@
 {
   "name": "orbit-db-eventstore",
-  "version": "1.11.0",
+  "version": "2.0.0",
   "description": "Eventlog for orbit-db",
   "type": "module",
   "main": "src/EventStore.js",
@@ -22,7 +22,7 @@
   "author": "Haad",
   "license": "MIT",
   "peerDependencies": {
-    "orbit-db-store": "next"
+    "orbit-db-store": "*"
   },
   "localMaintainers": [
     "haad <haad@haja.io>",
